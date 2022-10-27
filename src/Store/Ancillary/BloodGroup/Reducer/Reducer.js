@@ -4,8 +4,6 @@ const initialState = {};
 
 function bloodgroupReducer(bloodgroups = initialState, action) {
     const { type, payload } = action;
-    console.log("Reducer: ", action);
-
     switch (type) {
         case CREATE_BLOOD_GROUP:
             return [...bloodgroups, payload];
