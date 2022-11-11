@@ -1,8 +1,24 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { Button, IconButton } from '@mui/material';
+import { Edit } from '@mui/icons-material';
 
 const columns = [
+    {
+        field: 'action',
+        headerName: 'Action',
+        sortable: false,
+        renderCell: (params) => {
+            const onClick = (e) => {
+                console.log(e);
+                console.log(params);
+                e.stopPropagation(); // don't select this row after clicking 
+                return alert(JSON.stringify("thisRow", null, 4));
+            };
+            return params?.id === 1 ? <IconButton onClick={onClick}><Edit></Edit></IconButton> : "";
+        },
+    },
     { field: 'id', headerName: 'ID', width: 90 },
     {
         field: 'firstName',
@@ -51,6 +67,7 @@ export default function MuiDataGrid() {
     return (
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
+                density="compact"
                 components={{ Toolbar: GridToolbar }}
                 rows={rows}
                 columns={columns}
