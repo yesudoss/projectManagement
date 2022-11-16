@@ -6,8 +6,10 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Base from '../../Base/views/Base';
 import EmpBas from '../../Base/views/EmpBas';
-import PdfExporting from './PdfExporting';
 import MuiDataGrid from './MuiDataGrid';
+import ReactPDF, { PDFViewer } from '@react-pdf/renderer';
+import MemberReport from './MemberReport';
+import { Button } from '@mui/material';
 
 export default function Master() {
     const [value, setValue] = React.useState('1');
@@ -16,6 +18,9 @@ export default function Master() {
         setValue(newValue);
     };
 
+    const download = () => {
+        ReactPDF.renderToStream(<MemberReport />);
+    }
     return (
         <Base>
             <Box sx={{ width: '100%', typography: 'body1', minHeight: "87vh" }}>
@@ -34,7 +39,12 @@ export default function Master() {
                         <MuiDataGrid />
                     </TabPanel>
                     <TabPanel value="3">
-                        <PdfExporting />
+                        <div>Hello</div>
+                        <Button variant='contained' onClick={download}>download</Button>
+                        <MemberReport />
+                        {/* <PDFViewer>
+                            <MemberReport />
+                        </PDFViewer> */}
                     </TabPanel>
                 </TabContext>
             </Box>
