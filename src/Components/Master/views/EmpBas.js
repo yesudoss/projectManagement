@@ -12,7 +12,7 @@ const EmpBas = () => {
     const [files, setFiles] = useState([])
 
     // ** Hook
-    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    const { getRootProps, getInputProps } = useDropzone({
         disabled: false,
         multiple: false,
         maxSize: 2000000,
@@ -94,7 +94,7 @@ const EmpBas = () => {
                                 right: "24px",
                             }}
                         >Active</span>
-                        <Box sx={{ marginBottom: "40px" }} {...getRootProps({ className: 'dropzone' })}>
+                        <Box sx={{ marginBottom: "40px", border: "none", cursor: "default" }} {...getRootProps({ className: 'dropzone' })}>
                             <input {...getInputProps()} />
                             <div className='presentation'>
                                 <div className='placeholder'>
@@ -106,7 +106,6 @@ const EmpBas = () => {
                                             </Typography>
                                         </>
                                     }
-
                                 </div>
                             </div>
                             <Typography sx={{ margin: "16px auto 0px" }} variant='caption' className='content'>

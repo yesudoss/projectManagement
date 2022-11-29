@@ -5,9 +5,8 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Base from '../../Base/views/Base';
-import EmpBas from '../../Base/views/EmpBas';
-import MuiDataGrid from './MuiDataGrid';
-import ReactPDF, { PDFViewer } from '@react-pdf/renderer';
+import EmpBas from './EmpBas';
+import ReactPDF from '@react-pdf/renderer';
 import MemberReport from './MemberReport';
 import { Button } from '@mui/material';
 
@@ -36,15 +35,13 @@ export default function Master() {
                         <EmpBas />
                     </TabPanel>
                     <TabPanel value="2">
-                        <MuiDataGrid />
+                        <div>
+                            Vicariate
+                        </div>
                     </TabPanel>
                     <TabPanel value="3">
-                        <div>Hello</div>
                         <Button variant='contained' onClick={download}>download</Button>
                         <MemberReport />
-                        {/* <PDFViewer>
-                            <MemberReport />
-                        </PDFViewer> */}
                     </TabPanel>
                 </TabContext>
             </Box>

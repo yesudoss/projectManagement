@@ -208,7 +208,7 @@ export default function Base({ children }) {
                                 >
                                     {menuItem?.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={menuItem?.name} sx={{ opacity: open ? 1 : 0 }} />
+                                <ListItemText primary={menuItem?.name} sx={{ opacity: open ? 1 : 0, fontWeight: 400 }} />
                             </ListItemButton>
                         </ListItem>
                     ))}
