@@ -1,17 +1,14 @@
 import React from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Dashboard from "./Components/Base/views/Dashboard";
-import Users from "./Components/Base/views/Users";
 import About from "./Components/Base/views/About";
 import SignIn from "./Components/User/views/SignIn";
 import Master from "./Components/Master/views/Master";
 import BloodGroup from "./Components/Ancillary/BloodGroup/views/BloodGroup";
 import AutocompleteExample from "./Components/Ancillary/BloodGroup/views/AutoCompleteExample";
-// import BloodGroup from "./Components/Ancillary/views/BloodGroup/BloodGroup";
-
+import Users from "./Components/User/views/Users";
 
 function Routers() {
-
     return (
         <BrowserRouter>
             <Routes>
