@@ -20,13 +20,13 @@ import { useNavigate } from "react-router-dom";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import ChurchIcon from '@mui/icons-material/Church';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import { Collapse, Menu, MenuItem } from '@mui/material';
+import { Collapse, Fab, Menu, MenuItem } from '@mui/material';
 import { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import * as ActionTypes from "../../../Store/Menu/ActionTypes"
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { ExpandLess, ExpandMore, Logout, PersonAdd, Settings } from '@mui/icons-material';
+import { ExpandLess, ExpandMore, Settings } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -102,6 +102,7 @@ export default function Base({ children }) {
     const { open, fixedMenu, isMobile } = useSelector(state => state?.MenuReducer);
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedIndex, setSelectedIndex] = useState();
+    const [selectedCollapseMenu, setSelectedCollapseMenu] = useState();
 
     useEffect(() => {
         setSelectedIndex(sessionStorage.getItem("selectedMenu") || 1);
@@ -142,13 +143,15 @@ export default function Base({ children }) {
     const [masterCollapse, setMasterCollapse] = useState(false);
     const [anchorEl1, setAnchorEl1] = useState(null);
     const openMenu = Boolean(anchorEl1);
-    const handleMenuClick = (event) => {
+    const handleClickCollapseMenu = (event, value) => {
+        setSelectedCollapseMenu(value)
         setAnchorEl1(event.currentTarget);
-    };
+    }
+
     const handleMenuClose = () => {
         setAnchorEl1(null);
     };
-
+    const ITEM_HEIGHT = 48;
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -246,7 +249,7 @@ export default function Base({ children }) {
                         <ListItemText primary={"Users"} />
                     </ListItemButton>
                     {/* Configurations */}
-                    <ListItemButton onClick={(event) => !open ? handleMenuClick(event) : setConfigCollapse(!configCollapse)}>
+                    <ListItemButton onClick={(event) => !open ? handleClickCollapseMenu(event, "config") : setConfigCollapse(!configCollapse)}>
                         <ListItemIcon>
                             <InboxIcon />
                         </ListItemIcon>
@@ -272,7 +275,7 @@ export default function Base({ children }) {
                         </List>
                     </Collapse>
                     {/* Masters */}
-                    <ListItemButton onClick={(event) => !open ? handleMenuClick(event) : setMasterCollapse(!masterCollapse)}>
+                    <ListItemButton onClick={(event) => !open ? handleClickCollapseMenu(event, "master") : setMasterCollapse(!masterCollapse)}>
                         <ListItemIcon>
                             <InboxIcon />
                         </ListItemIcon>
@@ -304,11 +307,14 @@ export default function Base({ children }) {
                 id="account-menu"
                 open={openMenu}
                 onClose={handleMenuClose}
-                onClick={handleMenuClose}
                 PaperProps={{
                     elevation: 1,
+                    style: {
+                        maxHeight: ITEM_HEIGHT * 4.5,
+                        width: '20ch',
+                    },
                     sx: {
-                        overflow: 'visible',
+                        borderRadius: "10px",
                         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                         ml: 6.5,
                         '& .MuiAvatar-root': {
@@ -334,29 +340,38 @@ export default function Base({ children }) {
                 transformOrigin={{ horizontal: 'left', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
             >
-                <MenuItem>
-                    <ListItemIcon>
-                        <PersonAdd fontSize="small" />
-                    </ListItemIcon>
-                    Add another account
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <Settings fontSize="small" />
-                    </ListItemIcon>
-                    Settings
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <Logout fontSize="small" />
-                    </ListItemIcon>
-                    Logout
-                </MenuItem>
+                {selectedCollapseMenu === "config" &&
+                    <>
+                        <MenuItem sx={{ fontColor: "black", fontWeight: 600, color: "black" }}>Configurations</MenuItem>
+                        <MenuItem selected={selectedIndex === "config1"} onClick={(event) => handleListItemClick(event, "config1", "/bloodgroup")}>Blood Group</MenuItem>
+                    </>
+                }
+                {selectedCollapseMenu === "master" &&
+                    <>
+                        <MenuItem sx={{ fontColor: "black", fontWeight: 600, color: "black" }}>Master</MenuItem>
+                        <MenuItem selected={selectedIndex === "master1"} onClick={(event) => handleListItemClick(event, "master1", "/about")}>About</MenuItem>
+                    </>
+                }
             </Menu>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
                 <div><Toaster position='top-right' /></div>
                 {children}
+            </Box>
+
+            <Box sx={{
+                right: "24px",
+                bottom: "24px",
+                zIndex: 999,
+                position: "fixed",
+                borderRadius: "50%",
+                boxShadow: "rgb(99 115 129 / 36%) -12px 12px 32px -4px",
+                backdropFilter: "blur(6px)",
+                backgroundColor: "rgba(255, 255, 255, 0.8)"
+            }}>
+                <Fab aria-label="settings">
+                    <Settings />
+                </Fab>
             </Box>
         </Box>
     );
