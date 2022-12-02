@@ -48,8 +48,8 @@ export default function SignIn() {
             <Container maxWidth="lg">
                 <Grid container spacing={1} alignItems="center" justifyContent="center" marginTop="48px">
                     <Grid item xs={12} md={7.5}>
-                        <h1 style={{ margin: "0px", fontSize: "175px", fontWeight: 300, color: "rgb(22, 177, 255)" }}>HRMS</h1>
-                        <h4 style={{ margin: "0px", fontSize: "25px", fontWeight: 300 }}>Human Resource Management System</h4>
+                        <h1 style={{ margin: "0px", fontSize: "175px", fontWeight: 300, color: "rgb(22, 177, 255)" }}>SPMS</h1>
+                        <h4 style={{ margin: "0px", fontSize: "25px", fontWeight: 300 }}>Software Project Management System</h4>
                     </Grid>
                     <Grid item xs={12} md={4.5}>
                         <Box

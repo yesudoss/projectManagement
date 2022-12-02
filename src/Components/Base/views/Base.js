@@ -120,7 +120,6 @@ export default function Base({ children }) {
     };
     const menuItemData = [
         { id: '1', name: "Dashboard", to: "/dashboard", icon: <DashboardIcon fontSize='small' /> },
-        { id: '2', name: "About", to: "/about", icon: <ChurchIcon fontSize='small' /> },
         { id: '3', name: "Users", to: "/users", icon: <ChurchIcon fontSize='small' /> },
         { id: '4', name: "Master", to: "/master", icon: <ChurchIcon fontSize='small' /> },
         { id: '5', name: "Blood Group", to: "/bloodgroup", icon: <ChurchIcon fontSize='small' /> }
@@ -170,7 +169,7 @@ export default function Base({ children }) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        HRMS
+                        SPMS
                     </Typography>
                     {(
                         <div>
@@ -285,7 +284,7 @@ export default function Base({ children }) {
                     <Collapse in={masterCollapse} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
                             <ListItemButton selected={selectedIndex === "master1"}
-                                onClick={(event) => handleListItemClick(event, "master1", "/about")} sx={{ pl: 4, justifyContent: "center" }}>
+                                onClick={(event) => handleListItemClick(event, "master1", "/company")} sx={{ pl: 4, justifyContent: "center" }}>
                                 <ListItemIcon>
                                     <span style={{
                                         width: "4px",
@@ -296,7 +295,22 @@ export default function Base({ children }) {
                                         transform: "scale(2)"
                                     }}></span>
                                 </ListItemIcon>
-                                <ListItemText primary="About" />
+                                <ListItemText primary="Comany" />
+                            </ListItemButton>
+
+                            <ListItemButton selected={selectedIndex === "master2"}
+                                onClick={(event) => handleListItemClick(event, "master2", "/department")} sx={{ pl: 4, justifyContent: "center" }}>
+                                <ListItemIcon>
+                                    <span style={{
+                                        width: "4px",
+                                        height: "4px",
+                                        borderRadius: "50%",
+                                        backgroundColor: theme.palette.primary.main,
+                                        transition: "transform 200ms cubicBezier(0.4, 0, 0.2, 1) 0ms",
+                                        transform: "scale(2)"
+                                    }}></span>
+                                </ListItemIcon>
+                                <ListItemText primary="Department" />
                             </ListItemButton>
                         </List>
                     </Collapse>
@@ -349,7 +363,8 @@ export default function Base({ children }) {
                 {selectedCollapseMenu === "master" &&
                     <>
                         <MenuItem sx={{ fontColor: "black", fontWeight: 600, color: "black" }}>Master</MenuItem>
-                        <MenuItem selected={selectedIndex === "master1"} onClick={(event) => handleListItemClick(event, "master1", "/about")}>About</MenuItem>
+                        <MenuItem selected={selectedIndex === "master1"} onClick={(event) => handleListItemClick(event, "master1", "/company")}>Company</MenuItem>
+                        <MenuItem selected={selectedIndex === "master2"} onClick={(event) => handleListItemClick(event, "master2", "/department")}>Department</MenuItem>
                     </>
                 }
             </Menu>
