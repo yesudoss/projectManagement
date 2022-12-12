@@ -24,7 +24,7 @@ export default function Master() {
         <Base>
             <Box sx={{ width: '100%', typography: 'body1', minHeight: "87vh" }}>
                 <TabContext value={value}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Box>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
                             <Tab label="Diocese" value="1" sx={{ textTransform: "none" }} />
                             <Tab label="Vicariate" value="2" sx={{ textTransform: "none" }} />

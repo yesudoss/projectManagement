@@ -7,6 +7,7 @@ import Users from "./Components/User/views/Users";
 import Company from "./Components/Master/views/Company/Company";
 import Department from "./Components/Master/views/Department/Department";
 import Dashboard from "./Components/Dashboard/views/Dashboard";
+import PdfReportLandingPage from "./Components/PDFReport/views/PdfReportLandingPage";
 
 function Routers() {
     return (
@@ -19,6 +20,7 @@ function Routers() {
                 <Route exact path="/bloodgroup" element={<BloodGroup />} />
                 <Route exact path="/company" element={<Company />} />
                 <Route exact path="/department" element={<Department />} />
+                <Route exact path="/pdf" element={<PdfReportLandingPage />} />
             </Routes>
         </BrowserRouter>
     );
