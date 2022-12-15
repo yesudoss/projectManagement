@@ -506,8 +506,8 @@ export default function Base({ children }) {
                 </Menu>
                 <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <DrawerHeader />
-                    <div><Toaster position='top-right' /></div>
                     {children}
+                    <div><Toaster position='top-right' /></div>
                 </Box>
 
                 <Box sx={{

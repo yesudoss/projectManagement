@@ -1,6 +1,7 @@
-import Base from "../../Base/views/Base"
+import Base from "../../Base/views/Base";
 
 function Dashboard() {
+
 
     return (
         <Base>

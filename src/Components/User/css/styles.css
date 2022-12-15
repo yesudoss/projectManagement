@@ -1,0 +1,18 @@
+/* Outside Border */
+.fc-scrollgrid {
+    border: none !important;
+}
+
+.fc-scrollgrid td:last-of-type {
+    border-right: none !important;
+}
+
+/* Current date Background Color */
+.fc-day-today {
+    background: #edeff1 !important;
+    border: none !important;
+}
+
+.fc-h-event .fc-event-main {
+    font-size: 14px;
+}
